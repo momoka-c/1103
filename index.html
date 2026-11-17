@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#FBFAEC">
+<title>Texture Box</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Zen+Maru+Gothic:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+
+  <!-- 1. ホーム -->
+  <section class="screen active" id="home">
+    <div class="slot blob pink" data-asset="btnFind" id="goFind" style="left:42;top:140;width:252;height:143" role="button">
+     
+    </div>
+    <div class="slot blob orange" data-asset="btnBox" id="goBox" style="left:77;top:297;width:252;height:142" role="button">
+      
+    </div>
+    <div class="ground"><div class="sand" data-asset="sand"></div></div>
+    <div class="slot star" data-asset="charBlue" style="left:228;top:550;width:125;height:125"><i class="eyes"></i></div>
+    <div class="slot grey" data-asset="charGrey" style="left:153;top:598;width:80;height:70"></div>
+  </section>
+
+  <!-- 2. 撮影 -->
+  <section class="screen" id="shoot">
+    <div class="slot blob pink" data-asset="headerBlob" id="shootBack" style="left:82;top:0;width:198;height:113" role="button">
+      <span class="label"><b class="cond">Texture</b> を探しに行く</span>
+    </div>
+    <div class="camArea" id="camArea" style="left:10;top:135;width:342;height:402"><span>タップして撮影</span></div>
+    <div class="ground low"><div class="sand" data-asset="sand"></div></div>
+    <div class="slot sq" data-asset="btnFolder" id="pickBtn" style="left:40;top:580;width:53;height:53" role="button"></div>
+    <div class="slot circ" data-asset="btnShutter" id="shutter" style="left:150;top:580;width:62;height:62" role="button"></div>
+    <input type="file" id="fileCam" accept="image/*" capture="environment" hidden>
+    <input type="file" id="fileLib" accept="image/*" hidden>
+  </section>
+
+  <!-- 3. 切り抜き -->
+  <section class="screen" id="crop">
+    <div class="slot blob pink" data-asset="headerBlob" id="cropBack" style="left:82;top:0;width:198;height:113" role="button">
+      <span class="label"><b class="cond">Texture</b> を探しに行く</span>
+    </div>
+    <div class="camArea" id="cropArea" style="left:33;top:143;width:300;height:353">
+      <img id="cropImg" alt="">
+      <div id="frame"><i id="handle"></i></div>
+    </div>
+    <div class="ground low"><div class="sand" data-asset="sand"></div></div>
+    <div class="slot blob pink" data-asset="btnSave" id="saveBtn" style="left:262;top:505;width:92;height:52" role="button">
+      <span class="label small">あつめる</span>
+    </div>
+    <div class="notice" style="left:22;top:560;width:326;height:112">
+      <div class="frameBg" data-asset="noticeFrame"></div>
+      <div class="row"><label>notice:</label><textarea id="noticeIn" rows="2" maxlength="60" placeholder="網戸越しに撮ると&#10;エフェクトかけたみたい"></textarea></div>
+      <div class="row"><label>date:</label><span id="dateOut"></span></div>
+    </div>
+  </section>
+
+  <!-- 4. Texture Box -->
+  <section class="screen" id="box">
+    <div class="slot title" data-asset="titleBox" id="titleBack" style="left:38;top:33;width:130;height:36" role="button"><b class="cond">Texture Box</b></div>
+    <div class="slot cal" data-asset="iconCalendar" id="goCal" style="left:270;top:30;width:44;height:38" role="button"><i class="calIcon"></i></div>
+    <div class="boxFrame" style="left:38;top:73;width:289;height:488"><div class="pile" id="pile"></div></div>
+    <div class="ground low"><div class="sand" data-asset="sand"></div></div>
+    <div class="slot star small" data-asset="charBlue" style="left:0;top:553;width:105;height:105"><i class="eyes"></i></div>
+    <div class="notice mini" id="latest" style="left:120;top:575;width:225;height:80">
+      <div class="frameBg" data-asset="noticeFrame"></div>
+      <div class="row"><label>notice:</label><span id="lNotice">—</span></div>
+      <div class="row"><label>date:</label><span id="lDate">—</span></div>
+    </div>
+    <div id="empty" class="empty">まだ何もないよ<br>テクスチャーを探しに行こう</div>
+  </section>
+
+  <!-- 5. カレンダー -->
+  <section class="screen" id="calendar">
+    <header class="calHead">
+      <button id="calBack" aria-label="もどる">‹</button>
+      <span>テクスチャーアーカイブ</span>
+      <span class="spacer"></span>
+    </header>
+    <div id="calBody"></div>
+  </section>
+
+  <!-- 詳細 -->
+  <div id="detail" hidden>
+    <div class="dCard">
+      <img id="dImg" alt="">
+      <div class="dRow"><label>notice:</label><p id="dNotice"></p></div>
+      <div class="dRow"><label>date:</label><p id="dDate"></p></div>
+      <div class="dBtns"><button id="dDel">けす</button><button id="dClose">とじる</button></div>
+    </div>
+  </div>
+
+</div>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
